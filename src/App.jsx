@@ -1,10 +1,15 @@
 import React from 'react'
+import SideBar from './components/SideBar'
+import MainContainer from './components/MainContainer'
+import Wrapper from './assets/wrappers/AppLayout'
+
 
 const App = () => {
   return (
-    <div>
-      Spotify app
-    </div>
+    <Wrapper>
+      <SideBar/>
+      <MainContainer />
+    </Wrapper>
   )
 }
 
