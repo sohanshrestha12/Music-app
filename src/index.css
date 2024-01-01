@@ -1,17 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
-body{
+
+body {
   background-color: black;
   color: white;
+  scrollbar-color: #333 #222;
+  -moz-scrollbar-color: #333 #222;
 }
-.border{
+
+.border {
   border: 2px solid red;
-  margin:3px;
+  margin: 3px;
 }
-.invert{
+
+.invert {
   filter: (1);
 }
+

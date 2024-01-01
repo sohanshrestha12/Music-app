@@ -28,6 +28,11 @@ const SideBar = () => {
           <RiPlayListLine className="invert" />
           <h2>Your Library</h2>
         </div>
+        <div className="songList">
+          <ul>
+            <li>song names</li>
+          </ul>
+        </div>
         <div className="footer">
           <div>
             <a href="https://www.spotify.com/us/legal/">

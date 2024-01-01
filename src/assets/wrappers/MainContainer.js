@@ -4,7 +4,8 @@ const Wrapper = styled.section`
   width: 75vw;
   background-color: #121212;
   border-radius: 7px;
-  margin: 15px 10px 0 5px;
+  margin: 15px 10px 5px 5px;
+  position: relative;
 
   .header {
     display: flex;
@@ -21,6 +22,24 @@ const Wrapper = styled.section`
   .spotifyPlaylists h1 {
     padding: 0 0 0 20px;
   }
+  .cardContainer {
+    max-height: 60vh;
+    overflow-y: scroll;
+  }
+  /* scrollbar style*/
+  .cardContainer::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  .cardContainer::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 6px;
+  }
+
+  .cardContainer::-webkit-scrollbar-track {
+    background-color: #222;
+  }
+  /* end */
   .spotifyPlaylists .cardContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -50,30 +69,126 @@ const Wrapper = styled.section`
     background-color: #1edc62;
     position: absolute;
     opacity: 0;
-    transition:all 0.3s ease;
+    transition: all 0.3s ease;
     bottom: -10px;
     right: 10px;
   }
-  .card:hover{
-    cursor: pointer;
-  }
-  .card:hover .play{
-    opacity:1;
-    bottom:10px;
+
+  .card:hover .play {
+    opacity: 1;
+    bottom: 10px;
   }
   .card .play svg {
     font-size: 21px;
     color: black;
-    padding-left:2px;
+    padding-left: 2px;
   }
   .spotifyPlaylists .card {
-    padding: 10px 10px 15px 10px;
+    padding: 13px 10px 15px 10px;
     border-radius: 5px;
     background-color: #252525;
   }
+  .card:hover {
+    cursor: pointer;
+    background-color: #2d2d2d;
+  }
   .spotifyPlaylists .cardContainer .card .cardImage img {
     width: 100%;
-    object-fit: contain;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+  }
+  .buttons > * {
+    margin: 0 12px;
+  }
+  .signUpBtn {
+    background-color: #0a0a0a;
+    color: rgba(118, 115, 115, 1);
+    font-weight: bold;
+    border: none;
+    outline: none;
+  }
+  .signUpBtn:hover {
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+  }
+  .logInBtn {
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+  }
+  .logInBtn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  .playBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 25px);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    background-color: red;
+    gap: 20px;
+    background-color: #282828;
+    border-radius: 50px;
+  }
+  .songButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+    flex-basis: 50%;
+  }
+  .songButtons .songButtonsControls > * {
+    margin-right: 12px;
+  }
+  .songButtons .songButtonsControls svg {
+    font-size: 30px;
+  }
+  .songButtons .songButtonsControls svg:nth-child(1),
+  .songButtons .songButtonsControls svg:nth-child(3) {
+    color: #b7adad;
+  }
+  .songButtons .songButtonsControls svg:nth-child(1):hover,
+  .songButtons .songButtonsControls svg:nth-child(3):hover {
+    color: white;
+  }
+  .songButtons .songButtonsControls svg:nth-child(2):hover{
+    transform:scale(1.05);
+  }
+  .songButtons .songButtonsControls svg:hover {
+    cursor: pointer;
+  }
+  .playBar .songInfo {
+    font-size: 15px;
+    flex-basis: 23%;
+  }
+  .seekBar {
+    height: 2px;
+    width: 100%;
+    position: relative;
+    background-color: #b7adad;
+    border-radius: 10px;
+  }
+  .circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .songTime {
+    flex-basis: 20%;
   }
 `;
 
