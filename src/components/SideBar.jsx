@@ -4,10 +4,16 @@ import { IoMdHome } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { RiPlayListLine } from "react-icons/ri";
 import logo from "../assets/logo.svg";
+import { useMenuContext } from "../App";
+import { IoClose } from "react-icons/io5";
 
 const SideBar = () => {
+  const {isMenuVisible,toggleMenu} = useMenuContext();
   return (
-    <Wrapper>
+    <Wrapper className={isMenuVisible? 'visible' : ''}>
+      <div className="close">
+        <IoClose onClick={toggleMenu}/>
+      </div>
       <div className="home">
         <div className="logo">
           <img src={logo} alt="logo" style={{ filter: "invert(1)" }} />

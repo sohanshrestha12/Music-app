@@ -7,7 +7,9 @@ import { FaPlayCircle } from "react-icons/fa";
 import { FaCirclePause } from "react-icons/fa6";
 import { MdSkipNext } from "react-icons/md";
 import { MdSkipPrevious } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
 import SongCard from "./SongCard";
+import { useMenuContext } from "../App";
 
 const MainContainer = () => {
   const [currentSong, setCurrentSong] = useState(null);
@@ -18,6 +20,7 @@ const MainContainer = () => {
   const seeker = useRef();
   const seekBar = useRef();
   const isPlayingRef = useRef(isPlaying);
+  const {toggleMenu} = useMenuContext();
 
   const play = (id) => {
     const cs = allSongs.find((song) => song.id === id);
@@ -37,6 +40,34 @@ const MainContainer = () => {
       }
     }
   };
+  const handlePrev = ()=>{
+    if (isPlaying) {
+      let prevSongId = Number(currentSong.id) - 1;
+      if (prevSongId < 1) {
+        prevSongId = allSongs.length;
+      }
+      const prevSong = allSongs.find(
+        (item) => item.id === prevSongId.toString()
+      );
+      audioRef.current.src = prevSong.path;
+      setCurrentSong(prevSong);
+      audioRef.current.play();
+    }
+  }
+  const handleNext = ()=>{
+    if(isPlaying){
+      let nextSongId = Number(currentSong.id) + 1;
+      if(nextSongId > allSongs.length){
+        nextSongId = 1;
+      }
+      const nextSong = allSongs.find((item) => item.id === nextSongId.toString());
+      audioRef.current.src = nextSong.path;
+      setCurrentSong(nextSong);
+      audioRef.current.play();
+
+    }
+  }
+
   useEffect(() => {
     audioRef.current.addEventListener("loadedmetadata", () => {
       setDuration(audioRef.current.duration);
@@ -80,10 +111,12 @@ const MainContainer = () => {
     }
   };
 
+
   return (
     <Wrapper>
       <div className="header">
         <div className="nav">
+          <IoMenu onClick={toggleMenu} className="invert hamburger" />
           <FaChevronLeft className="invert" />
           <FaChevronRight className="invert" />
         </div>
@@ -104,13 +137,13 @@ const MainContainer = () => {
         <div className="songInfo">{currentSong && currentSong.name}</div>
         <div className="songButtons">
           <div className="songButtonsControls">
-            <MdSkipPrevious />
+            <MdSkipPrevious onClick={handlePrev} />
             {isPlaying ? (
               <FaCirclePause onClick={handlePlayPause} />
             ) : (
               <FaPlayCircle onClick={handlePlayPause} />
             )}
-            <MdSkipNext />
+            <MdSkipNext onClick={handleNext} />
           </div>
           <div ref={seekBar} className="seekBar">
             <div ref={seeker} className="circle"></div>

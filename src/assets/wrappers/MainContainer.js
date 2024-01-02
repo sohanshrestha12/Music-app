@@ -10,6 +10,7 @@ const Wrapper = styled.section`
   .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #0a0a0a;
     border-radius: 7px 7px 0 0;
   }
@@ -20,11 +21,11 @@ const Wrapper = styled.section`
     padding: 16px;
   }
   .spotifyPlaylists h1 {
-    padding: 0 0 0 20px;
+    padding: 0 0 10px 20px;
   }
   .cardContainer {
     max-height: 60vh;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   /* scrollbar style*/
   .cardContainer::-webkit-scrollbar {
@@ -130,7 +131,7 @@ const Wrapper = styled.section`
     position: absolute;
     bottom: 0;
     left: 0;
-    height:65px;
+    height: 65px;
     width: calc(100% - 25px);
     padding: 12px;
     display: flex;
@@ -162,8 +163,8 @@ const Wrapper = styled.section`
   .songButtons .songButtonsControls svg:nth-child(3):hover {
     color: white;
   }
-  .songButtons .songButtonsControls svg:nth-child(2):hover{
-    transform:scale(1.05);
+  .songButtons .songButtonsControls svg:nth-child(2):hover {
+    transform: scale(1.05);
   }
   .songButtons .songButtonsControls svg:hover {
     cursor: pointer;
@@ -179,7 +180,7 @@ const Wrapper = styled.section`
     background-color: #b7adad;
     border-radius: 10px;
   }
-  .seekBar:hover{
+  .seekBar:hover {
     height: 5px;
     cursor: pointer;
   }
@@ -195,6 +196,28 @@ const Wrapper = styled.section`
   }
   .songTime {
     flex-basis: 20%;
+  }
+  .hamburger {
+    font-size:30px;
+    display:none;
+  }
+  .nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+  }
+  @media screen and (max-width: 1200px) {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    .playBar {
+      width: 100%;
+      bottom: 10px;
+    }
+    .hamburger{
+      display:block;
+    }
   }
 `;
 
