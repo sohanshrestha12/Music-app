@@ -10,6 +10,7 @@ import { MdSkipPrevious } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import SongCard from "./SongCard";
 import { useMenuContext } from "../App";
+import { FaVolumeUp } from "react-icons/fa";
 
 const MainContainer = () => {
   const [currentSong, setCurrentSong] = useState(null);
@@ -17,10 +18,11 @@ const MainContainer = () => {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef(new Audio());
+  const volumeRef = useRef();
   const seeker = useRef();
   const seekBar = useRef();
   const isPlayingRef = useRef(isPlaying);
-  const {toggleMenu} = useMenuContext();
+  const { toggleMenu } = useMenuContext();
 
   const play = (id) => {
     const cs = allSongs.find((song) => song.id === id);
@@ -40,7 +42,7 @@ const MainContainer = () => {
       }
     }
   };
-  const handlePrev = ()=>{
+  const handlePrev = () => {
     if (isPlaying) {
       let prevSongId = Number(currentSong.id) - 1;
       if (prevSongId < 1) {
@@ -53,20 +55,25 @@ const MainContainer = () => {
       setCurrentSong(prevSong);
       audioRef.current.play();
     }
-  }
-  const handleNext = ()=>{
-    if(isPlaying){
+  };
+  const handleNext = () => {
+    if (isPlaying) {
       let nextSongId = Number(currentSong.id) + 1;
-      if(nextSongId > allSongs.length){
+      if (nextSongId > allSongs.length) {
         nextSongId = 1;
       }
-      const nextSong = allSongs.find((item) => item.id === nextSongId.toString());
+      const nextSong = allSongs.find(
+        (item) => item.id === nextSongId.toString()
+      );
       audioRef.current.src = nextSong.path;
       setCurrentSong(nextSong);
       audioRef.current.play();
-
     }
-  }
+  };
+   useEffect(() => {
+
+    volumeRef.current.value = '100';
+   },[]);
 
   useEffect(() => {
     audioRef.current.addEventListener("loadedmetadata", () => {
@@ -110,7 +117,9 @@ const MainContainer = () => {
       audioRef.current.play();
     }
   };
-
+  const handleVolume = (e)=>{
+    audioRef.current.volume = (e.target.value)/100;
+  }
 
   return (
     <Wrapper>
@@ -149,10 +158,24 @@ const MainContainer = () => {
             <div ref={seeker} className="circle"></div>
           </div>
         </div>
-        <div className="songTime">
-          {duration === 0
-            ? ""
-            : ` ${formatTime(currentTime)} / ${formatTime(duration)}`}
+        <div className="timeVol">
+          <div className="songTime">
+            {duration === 0
+              ? ""
+              : ` ${formatTime(currentTime)} / ${formatTime(duration)}`}
+          </div>
+          <div className="volume">
+            <FaVolumeUp />
+            <div className="volRange">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                ref={volumeRef}
+                onChange={handleVolume}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>

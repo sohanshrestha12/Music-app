@@ -135,6 +135,7 @@ const Wrapper = styled.section`
     width: calc(100% - 25px);
     padding: 12px;
     display: flex;
+    justify-content:center;
     align-items: center;
     background-color: red;
     gap: 20px;
@@ -194,18 +195,41 @@ const Wrapper = styled.section`
     transform: translateY(-50%);
     transition: 0.3s ease;
   }
-  .songTime {
+  .timeVol {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
     flex-basis: 20%;
   }
-  .hamburger {
-    font-size:30px;
-    display:none;
+  .volume {
+    position: relative;
   }
-  .nav{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
+  .volRange {
+    display: none;
+    position: absolute;
+    top: -75px;
+    left: -57px;
+    transform: rotate(270deg);
+  }
+  .volume:hover,.volRange input:hover{
+    cursor: pointer;
+  }
+  .volume:hover .volRange,
+  .volRange:hover,
+  .volume:hover + .volRange {
+    display: block;
+  }
+
+  .hamburger {
+    font-size: 30px;
+    display: none;
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
   @media screen and (max-width: 1200px) {
     width: 100%;
@@ -215,8 +239,8 @@ const Wrapper = styled.section`
       width: 100%;
       bottom: 10px;
     }
-    .hamburger{
-      display:block;
+    .hamburger {
+      display: block;
     }
   }
 `;
