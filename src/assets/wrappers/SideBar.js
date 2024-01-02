@@ -5,6 +5,9 @@ const Wrapper = styled.section`
     padding:10px 0 0 10px;
     background-color:black;
     color:white;
+    .logo img{
+        width:110px;
+    }
     .home,.library{
         background-color:#121212;
         border-radius:7px;

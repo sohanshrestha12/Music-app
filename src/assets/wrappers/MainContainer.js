@@ -130,6 +130,7 @@ const Wrapper = styled.section`
     position: absolute;
     bottom: 0;
     left: 0;
+    height:65px;
     width: calc(100% - 25px);
     padding: 12px;
     display: flex;
@@ -178,6 +179,10 @@ const Wrapper = styled.section`
     background-color: #b7adad;
     border-radius: 10px;
   }
+  .seekBar:hover{
+    height: 5px;
+    cursor: pointer;
+  }
   .circle {
     width: 13px;
     height: 13px;
@@ -186,6 +191,7 @@ const Wrapper = styled.section`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: 0.3s ease;
   }
   .songTime {
     flex-basis: 20%;
