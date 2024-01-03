@@ -238,6 +238,15 @@ const Wrapper = styled.section`
     .playBar {
       width: 100%;
       bottom: 10px;
+      height:140px;
+      border-radius:15px;
+      flex-direction:column;
+    }
+    .songButtons{
+      width:100%;
+    }
+    .volume{
+      display:none;
     }
     .hamburger {
       display: block;

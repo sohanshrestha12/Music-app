@@ -125,6 +125,7 @@ const Wrapper = styled.section`
       z-index: 1;
       top: 30px;
     }
+   
   }
 `;
 
