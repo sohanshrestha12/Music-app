@@ -6,13 +6,15 @@ import { RiPlayListLine } from "react-icons/ri";
 import logo from "../assets/logo.svg";
 import { useMenuContext } from "../App";
 import { IoClose } from "react-icons/io5";
+import SongLists from "./SongLists";
 
 const SideBar = () => {
-  const {isMenuVisible,toggleMenu} = useMenuContext();
+  const { isMenuVisible, toggleMenu, allPlaylistSongs} = useMenuContext();
+  const playlistSongs = allPlaylistSongs[0] && allPlaylistSongs[0].songs;
   return (
-    <Wrapper className={isMenuVisible? 'visible' : ''}>
+    <Wrapper className={isMenuVisible ? "visible" : ""}>
       <div className="close">
-        <IoClose onClick={toggleMenu}/>
+        <IoClose onClick={toggleMenu} />
       </div>
       <div className="home">
         <div className="logo">
@@ -35,9 +37,9 @@ const SideBar = () => {
           <h2>Your Library</h2>
         </div>
         <div className="songList">
-          <ul>
-            <li>song names</li>
-          </ul>
+          {playlistSongs && playlistSongs.map((item, i) => {
+            return <SongLists key={i} item={item} allPlaylistSongs={allPlaylistSongs} />;
+          })}
         </div>
         <div className="footer">
           <div>

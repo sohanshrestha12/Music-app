@@ -13,65 +13,24 @@ import { useMenuContext } from "../App";
 import { FaVolumeUp } from "react-icons/fa";
 
 const MainContainer = () => {
-  const [currentSong, setCurrentSong] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const {
+    play,
+    currentSong,
+    audioRef,
+    isPlaying,
+    handlePlayPause,
+    handlePrev,
+    handleNext,
+  } = useMenuContext();
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const audioRef = useRef(new Audio());
   const volumeRef = useRef();
   const seeker = useRef();
   const seekBar = useRef();
   const isPlayingRef = useRef(isPlaying);
   const { toggleMenu } = useMenuContext();
 
-  const play = (id) => {
-    const cs = allSongs.find((song) => song.id === id);
-    setCurrentSong(cs);
-    setIsPlaying(true);
-    audioRef.current.src = cs.path;
-    audioRef.current.play();
-  };
-  const handlePlayPause = () => {
-    if (currentSong) {
-      if (isPlaying) {
-        setIsPlaying(!isPlaying);
-        audioRef.current.pause();
-      } else {
-        setIsPlaying(!isPlaying);
-        audioRef.current.play();
-      }
-    }
-  };
-  const handlePrev = () => {
-    if (isPlaying) {
-      let prevSongId = Number(currentSong.id) - 1;
-      if (prevSongId < 1) {
-        prevSongId = allSongs.length;
-      }
-      const prevSong = allSongs.find(
-        (item) => item.id === prevSongId.toString()
-      );
-      audioRef.current.src = prevSong.path;
-      setCurrentSong(prevSong);
-      audioRef.current.play();
-    }
-  };
-  const handleNext = () => {
-    if (isPlaying) {
-      let nextSongId = Number(currentSong.id) + 1;
-      if (nextSongId > allSongs.length) {
-        nextSongId = 1;
-      }
-      const nextSong = allSongs.find(
-        (item) => item.id === nextSongId.toString()
-      );
-      audioRef.current.src = nextSong.path;
-      setCurrentSong(nextSong);
-      audioRef.current.play();
-    }
-  };
    useEffect(() => {
-
     volumeRef.current.value = '100';
    },[]);
 
@@ -81,11 +40,13 @@ const MainContainer = () => {
       seekBar.current.addEventListener("click", handleSeekClick);
     });
   }, []);
-  audioRef.current.addEventListener("timeupdate", () => {
-    setCurrentTime(audioRef.current.currentTime);
-    seeker.current.style.left =
-      (audioRef.current.currentTime / audioRef.current.duration) * 100 + "%";
-  });
+  useEffect(()=>{
+    audioRef.current.addEventListener("timeupdate", () => {
+      setCurrentTime(audioRef.current.currentTime);
+      seeker.current.style.left =
+        (audioRef.current.currentTime / audioRef.current.duration) * 100 + "%";
+    });
+  },[])
   const formatTime = (timeInSeconds) => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = Math.floor(timeInSeconds % 60);
