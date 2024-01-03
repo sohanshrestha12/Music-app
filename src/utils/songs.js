@@ -21,7 +21,6 @@ export const allSongs = [
             image: "src/assets/images/enemy.jpg",
             path: "src/assets/songs/Enemy.mp3",
           },
-         
         ],
       },
     ],
@@ -37,9 +36,9 @@ export const allSongs = [
           {
             id: "1",
             name: "Taylor Swift",
-            description: "The song is ending form an anime name SPYxFAMILY.",
-            image: "src/assets/images/SPY_x_FAMILY.webp",
-            path: "src/assets/songs/SpyXfamily.mp3",
+            description: "Song",
+            image: "src/assets/images/TS_BS.jpg",
+            path: "src/assets/songs/TS-BlankSpace.mp3",
           },
         ],
       },

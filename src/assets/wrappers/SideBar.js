@@ -56,7 +56,7 @@ const Wrapper = styled.section`
   .songList {
     max-height: 320px;
     overflow-y: auto;
-    padding-right:5px;
+    padding-right: 5px;
   }
   /* scrollbar style*/
   .songList::-webkit-scrollbar {
@@ -96,7 +96,12 @@ const Wrapper = styled.section`
   .songList ul li:nth-child(3) {
     flex-basis: 20%;
   }
-  .songList ul li:nth-child(2) {
+  .songList ul li:nth-child(3){
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+   .songList ul li:nth-child(2) {
     word-break: break;
     flex-basis: 80%;
   }

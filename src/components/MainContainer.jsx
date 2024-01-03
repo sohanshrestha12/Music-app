@@ -81,7 +81,7 @@ const MainContainer = () => {
   const handleVolume = (e)=>{
     audioRef.current.volume = (e.target.value)/100;
   }
-
+  audioRef.current.addEventListener('ended', handleNext);
   return (
     <Wrapper>
       <div className="header">

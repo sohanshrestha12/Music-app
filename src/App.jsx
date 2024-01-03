@@ -7,53 +7,53 @@ const MenuContext = createContext();
 
 const App = () => {
   const [isMenuVisible, setMenuVisible] = useState(false);
-  const audioRef = useRef(new Audio()); 
-  const [allPlaylistSongs,setAllPlaylistSongs] = useState([]);
+  const audioRef = useRef(new Audio());
+  const [allPlaylistSongs, setAllPlaylistSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-
-
-  
   const toggleMenu = () => {
     setMenuVisible(!isMenuVisible);
   };
-  const play = (category,id=1) => {
+  const play = (category, id = 1) => {
     setAllPlaylistSongs(category);
-    const currentlyPlayingSong = category[0].songs.find((item) => item.id === id.toString());
+    const currentlyPlayingSong = category[0].songs.find(
+      (item) => item.id === id.toString()
+    );
     setCurrentSong(currentlyPlayingSong);
     audioRef.current.src = currentlyPlayingSong.path;
     audioRef.current.play();
     setIsPlaying(true);
   };
-   const handlePlayPause = () => {
-     if (currentSong) {
-       if (isPlaying) {
-         setIsPlaying(!isPlaying);
-         audioRef.current.pause();
-       } else {
-         setIsPlaying(!isPlaying);
-         audioRef.current.play();
-       }
-     }
-   };
-   const handlePrev = () => {
-     if (isPlaying) {
-       let prevSongId = Number(currentSong.id) - 1;
-       if (prevSongId < 1) {
-         prevSongId = allPlaylistSongs[0].songs.length;
-       }
-       const prevSong = allPlaylistSongs[0].songs.find(
-         (item) => item.id === prevSongId.toString()
-       );
-       audioRef.current.src = prevSong.path;
-       setCurrentSong(prevSong);
-       audioRef.current.play();
-     }
-   };
-   
+  const handlePlayPause = () => {
+    if (currentSong) {
+      if (isPlaying) {
+        setIsPlaying(!isPlaying);
+        audioRef.current.pause();
+      } else {
+        setIsPlaying(!isPlaying);
+        audioRef.current.play();
+      }
+    }
+  };
+  const handlePrev = () => {
+    if (currentSong) {
+      let prevSongId = Number(currentSong.id) - 1;
+      if (prevSongId < 1) {
+        prevSongId = allPlaylistSongs[0].songs.length;
+      }
+      const prevSong = allPlaylistSongs[0].songs.find(
+        (item) => item.id === prevSongId.toString()
+      );
+      audioRef.current.src = prevSong.path;
+      setCurrentSong(prevSong);
+      setIsPlaying(true);
+      audioRef.current.play();
+    }
+  };
+
   const handleNext = () => {
-    if (isPlaying) {
+    if (currentSong) {
       let nextSongId = Number(currentSong.id) + 1;
       if (nextSongId > allPlaylistSongs[0].songs.length) {
         nextSongId = 1;
@@ -63,12 +63,26 @@ const App = () => {
       );
       audioRef.current.src = nextSong.path;
       setCurrentSong(nextSong);
-      audioRef.current.play();
+      setIsPlaying(true);
+      audioRef.current.addEventListener("canplaythrough", () => {
+        audioRef.current.play();
+      });
     }
   };
   return (
     <MenuContext.Provider
-      value={{ isMenuVisible, toggleMenu, play, allPlaylistSongs, currentSong ,audioRef,isPlaying,handlePlayPause,handlePrev,handleNext}}
+      value={{
+        isMenuVisible,
+        toggleMenu,
+        play,
+        allPlaylistSongs,
+        currentSong,
+        audioRef,
+        isPlaying,
+        handlePlayPause,
+        handlePrev,
+        handleNext,
+      }}
     >
       <Wrapper>
         <SideBar />
