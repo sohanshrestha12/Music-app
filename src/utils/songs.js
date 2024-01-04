@@ -5,7 +5,7 @@ export const allSongs = [
         playListId: 1,
         name: "Anime",
         description: "Some of the trending songs of anime collection.",
-        image: "src/assets/images/anime.jpg",
+        image: "/Music-app/src/assets/images/anime.jpg",
         songs: [
           {
             id: "1",
