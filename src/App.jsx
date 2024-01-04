@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useRef, useState } from "react";
 import SideBar from "./components/SideBar";
 import MainContainer from "./components/MainContainer";
-import Wrapper from "../public/assets/wrappers/AppLayout";
+import Wrapper from "./wrappers/AppLayout";
 
 
 const MenuContext = createContext();
