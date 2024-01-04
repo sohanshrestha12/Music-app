@@ -26,3 +26,6 @@ body {
 .visible {
   left: 0!important;
 }
+.active{
+  background-color: #2d2d2d;
+}

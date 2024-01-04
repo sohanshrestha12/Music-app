@@ -227,6 +227,9 @@ const Wrapper = styled.section`
     font-size: 30px;
     display: none;
   }
+  .hamburger:hover{
+    cursor: pointer;
+  }
   .nav {
     display: flex;
     justify-content: center;

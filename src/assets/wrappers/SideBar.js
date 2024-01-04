@@ -53,6 +53,9 @@ const Wrapper = styled.section`
     font-size: 20px;
     display: none;
   }
+  .close{
+    cursor: pointer;
+  }
   .songList {
     max-height: 320px;
     overflow-y: auto;
