@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Wrapper from "../assets/wrappers/MainContainer";
+import Wrapper from "../../public/assets/wrappers/MainContainer";
 import { allSongs } from "../utils/songs";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";

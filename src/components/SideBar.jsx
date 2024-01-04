@@ -1,9 +1,9 @@
 import React from "react";
-import Wrapper from "../assets/wrappers/SideBar";
+import Wrapper from "../../public/assets/wrappers/SideBar";
 import { IoMdHome } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { RiPlayListLine } from "react-icons/ri";
-import logo from "../assets/logo.svg";
+import logo from "../../public/assets/logo.svg";
 import { useMenuContext } from "../App";
 import { IoClose } from "react-icons/io5";
 import SongLists from "./SongLists";
