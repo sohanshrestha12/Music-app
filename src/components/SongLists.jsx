@@ -1,11 +1,12 @@
 import React from "react";
 import { IoMdPlay } from "react-icons/io";
 import { useMenuContext } from "../App";
+import { IoIosPause } from "react-icons/io";
 
 
 const SongLists = ({ item, allPlaylistSongs }) => {
   const { name, image, id } = item;
-  const { play } = useMenuContext();
+  const { play, currentSong } = useMenuContext();
   return (
     <ul onClick={() => play(allPlaylistSongs,id)}>
       <li>
@@ -13,7 +14,7 @@ const SongLists = ({ item, allPlaylistSongs }) => {
       </li>
       <li>{name}</li>
       <li>
-        <IoMdPlay />
+        {currentSong.id === id ?<IoIosPause/>:<IoMdPlay />}
       </li>
     </ul>
   );

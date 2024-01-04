@@ -52,6 +52,7 @@ const Wrapper = styled.section`
   }
   .card h2 {
     font-size: 18px;
+    word-break:break-all;
   }
   .card p {
     font-size: 12px;
@@ -135,7 +136,7 @@ const Wrapper = styled.section`
     width: calc(100% - 25px);
     padding: 12px;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     background-color: red;
     gap: 20px;
@@ -212,7 +213,8 @@ const Wrapper = styled.section`
     left: -57px;
     transform: rotate(270deg);
   }
-  .volume:hover,.volRange input:hover{
+  .volume:hover,
+  .volRange input:hover {
     cursor: pointer;
   }
   .volume:hover .volRange,
@@ -238,15 +240,15 @@ const Wrapper = styled.section`
     .playBar {
       width: 100%;
       bottom: 10px;
-      height:140px;
-      border-radius:15px;
-      flex-direction:column;
+      height: 140px;
+      border-radius: 15px;
+      flex-direction: column;
     }
-    .songButtons{
-      width:100%;
+    .songButtons {
+      width: 100%;
     }
-    .volume{
-      display:none;
+    .volume {
+      display: none;
     }
     .hamburger {
       display: block;
