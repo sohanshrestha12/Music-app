@@ -5,6 +5,19 @@ const Wrapper = styled.section`
   padding: 10px 0 0 10px;
   background-color: black;
   color: white;
+  .SideBar-cover {
+    background-color: transparent;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right:0;
+    bottom:0;
+    height:100%;
+    width:100vh;
+    z-index: 1;
+    margin-left: 300px;
+  }
   .logo img {
     width: 110px;
   }
@@ -53,7 +66,7 @@ const Wrapper = styled.section`
     font-size: 20px;
     display: none;
   }
-  .close{
+  .close {
     cursor: pointer;
   }
   .songList {
@@ -99,12 +112,12 @@ const Wrapper = styled.section`
   .songList ul li:nth-child(3) {
     flex-basis: 20%;
   }
-  .songList ul li:nth-child(3){
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  .songList ul li:nth-child(3) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-   .songList ul li:nth-child(2) {
+  .songList ul li:nth-child(2) {
     word-break: break;
     flex-basis: 80%;
   }
@@ -116,9 +129,9 @@ const Wrapper = styled.section`
   }
   @media screen and (max-width: 1200px) {
     position: absolute;
-    left: -110%;
+    left: -120%;
     transition: all 0.3s;
-    z-index: 1;
+    z-index: 9;
     width: 300px;
     height: 100vh;
     .close {
@@ -128,7 +141,9 @@ const Wrapper = styled.section`
       z-index: 1;
       top: 30px;
     }
-   
+    .SideBar-cover {
+      display: block;
+    }
   }
 `;
 

@@ -17,6 +17,9 @@ const App = () => {
     setMenuVisible(!isMenuVisible);
   };
   const play = (category, id = 1) => {
+    if(currentSong && currentSong.id === id){
+      return;
+    }
     setAllPlaylistSongs(category);
     const currentlyPlayingSong = category[0].songs.find(
       (item) => item.id === id.toString()

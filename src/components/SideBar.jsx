@@ -9,11 +9,12 @@ import SongLists from "./SongLists";
 import Wrapper from "../wrappers/SideBar";
 
 const SideBar = () => {
-  const { isMenuVisible, toggleMenu, allPlaylistSongs} = useMenuContext();
+  const { isMenuVisible, toggleMenu, allPlaylistSongs } = useMenuContext();
   const playlistSongs = allPlaylistSongs[0] && allPlaylistSongs[0].songs;
   return (
     <Wrapper className={isMenuVisible ? "visible" : ""}>
-      <div className="close">
+      {isMenuVisible && <div className="SideBar-cover" onClick={toggleMenu}></div>
+}      <div className="close">
         <IoClose onClick={toggleMenu} />
       </div>
       <div className="home">
@@ -37,9 +38,16 @@ const SideBar = () => {
           <h2>Your Library</h2>
         </div>
         <div className="songList">
-          {playlistSongs && playlistSongs.map((item, i) => {
-            return <SongLists key={i} item={item} allPlaylistSongs={allPlaylistSongs} />;
-          })}
+          {playlistSongs &&
+            playlistSongs.map((item, i) => {
+              return (
+                <SongLists
+                  key={i}
+                  item={item}
+                  allPlaylistSongs={allPlaylistSongs}
+                />
+              );
+            })}
         </div>
         <div className="footer">
           <div>

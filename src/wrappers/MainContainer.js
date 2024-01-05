@@ -6,7 +6,6 @@ const Wrapper = styled.section`
   border-radius: 7px;
   margin: 15px 10px 5px 5px;
   position: relative;
-
   .header {
     display: flex;
     justify-content: space-between;
@@ -52,7 +51,7 @@ const Wrapper = styled.section`
   }
   .card h2 {
     font-size: 18px;
-    word-break:break-all;
+    word-break: break-all;
   }
   .card p {
     font-size: 12px;
@@ -227,7 +226,7 @@ const Wrapper = styled.section`
     font-size: 30px;
     display: none;
   }
-  .hamburger:hover{
+  .hamburger:hover {
     cursor: pointer;
   }
   .nav {
@@ -241,11 +240,10 @@ const Wrapper = styled.section`
     height: 100vh;
     margin: 0;
     .playBar {
-      width: 100%;
-      bottom: 10px;
-      height: 140px;
+      height: 130px;
       border-radius: 15px;
       flex-direction: column;
+      width:100%;
     }
     .songButtons {
       width: 100%;
